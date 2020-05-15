@@ -11,7 +11,7 @@ class App extends Component {
     };
   }
 
-  // toggling our modal
+  // toggling our modal!
   toggle = () => {
     this.setState({ editmode: !this.state.editmode });
   };
