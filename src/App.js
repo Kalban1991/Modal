@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { Button } from "reactstrap";
+import Edit from "./components/Edit";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      editmode: false,
+    };
+  }
+
+  // toggling our modal
+  toggle = () => {
+    this.setState({ editmode: !this.state.editmode });
+  };
+
+  render() {
+    const { editmode } = this.state;
+    const text = editmode ? "Editing" : "Click to Edit";
+    return (
+      <div className="App">
+        <Button color="danger" onClick={this.toggle}>
+          {text}
+        </Button>
+        <Edit modal={editmode} toggle={this.toggle} />
+      </div>
+    );
+  }
 }
 
 export default App;
